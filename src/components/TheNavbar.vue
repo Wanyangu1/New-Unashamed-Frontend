@@ -99,7 +99,7 @@ onUnmounted(() => {
           <div class="flex flex-col text-left min-w-0">
             <span
               class="text-green-600 font-bold text-sm sm:text-base md:text-lg leading-tight group-hover:text-green-700 transition-colors truncate">Unashamed</span>
-            <span class="text-blue-900 text-xs sm:text-sm leading-tight truncate">Charity Group</span>
+            <span class="text-blue-900 text-xs sm:text-sm leading-tight truncate">Charity Org.</span>
           </div>
         </a>
 

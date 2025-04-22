@@ -11,7 +11,7 @@ const { teamMembers } = useMembers();
     <TheNavbar />
 
     <!-- Hero Section with Parallax Effect -->
-    <section class="relative h-screen min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
+    <section class="relative h-[90vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
       <!-- Parallax Background -->
       <div
         class="absolute inset-0 bg-[url('@/assets/images/hero-parallax.jpg')] bg-cover bg-center bg-no-repeat opacity-70"
@@ -157,160 +157,476 @@ const { teamMembers } = useMembers();
       </div>
     </section>
 
-    <!-- Branches Section -->
-    <section class="py-20 px-6 bg-white">
+    <!-- Branches Section - Horizontal Scrolling Version -->
+    <section class="py-24 px-6 bg-gradient-to-b from-gray-50 to-white">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          <span class="text-yellow-600 font-semibold tracking-wider">OUR REACH</span>
-          <h2 class="text-4xl font-bold text-gray-800 mt-2">Explore Our Branches</h2>
-          <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
-          <p class="text-gray-600 max-w-2xl mx-auto mt-6">
-            We're expanding our impact across multiple regions with dedicated local branches
-          </p>
+          <span
+            class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-yellow-600 uppercase rounded-full bg-yellow-50">
+            Our Reach
+          </span>
+          <h2 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+            Explore Our <span class="text-yellow-600">Branches</span>
+          </h2>
+          <div class="mt-6 max-w-2xl mx-auto">
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex justify-center">
+                <span class="px-3 bg-gray-50 text-gray-500 text-lg">
+                  Expanding our impact nationwide
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="relative overflow-hidden h-60">
-              <img src="@/assets/images/background.jpg" alt="Ongata Rongai Branch"
-                class="w-full h-full object-cover transition duration-500 hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Ongata Rongai</h3>
-                <p class="text-yellow-400">Headquarters</p>
+
+        <!-- Horizontal Scrolling Container -->
+        <div class="relative">
+          <!-- Scrollable Content -->
+          <div class="flex overflow-x-auto pb-8 -mx-4 px-4 scrollbar-hide">
+            <div class="flex space-x-8">
+              <!-- Branch Card Template -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/background.jpg" alt=" Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Ongata Rongai</h3>
+                        <p class="text-yellow-300 font-medium">Headquarters</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Our flagship branch located at the nation's capital, pioneering the group's influence and
+                    coordinating
+                    national activities.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Nairobi, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600">
-                Our flagship branch located at the nation's capital, pioneering the group's influence and coordinating
-                national activities.
-              </p>
-              <button
-                class="mt-4 text-yellow-600 font-semibold text-sm flex items-center hover:text-yellow-700 transition">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
+
+              <!-- Kisii Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/bg.jpg" alt="Kisii Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Kisii Branch</h3>
+                        <p class="text-yellow-300 font-medium">Nyanza Region</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Growing
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Serving the Nyanza region with members from Kisii University, Rongo University and surrounding
+                    communities.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Kisii, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kirinyaga Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/background.jpg" alt="Kirinyaga Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Kirinyaga Branch</h3>
+                        <p class="text-yellow-300 font-medium">Central Kenya</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Our Central Kenya branch engaging students from Kirinyaga University, Laikipia University and
+                    surrounding areas.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Kirinyaga, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kiambu Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Kiambu Branch</h3>
+                        <p class="text-yellow-300 font-medium">Central Kenya</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        New
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Serving Kiambu County with members from various tertiary institutions and local communities.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Kiambu, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/background.jpg" alt="Kiambu Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Meru Branch</h3>
+                        <p class="text-yellow-300 font-medium">Eastern Kenya</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        New
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Our Eastern Kenya branch engaging students and youth from Meru County and surrounding regions.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Meru, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Rongo Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Rongo Branch</h3>
+                        <p class="text-yellow-300 font-medium">Nyanza Region</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Located near Rongo University, serving surrounding communities with youth empowerment initiatives.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Rongo, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Kilifi Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/background.jpg" alt=" Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Kilifi Branch</h3>
+                        <p class="text-yellow-300 font-medium">Kilifi, Kenya</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    Supporting students and local communities in Kilifi County with a focus on coastal development and
+                    sustainability.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Kilifi, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Laikipia Branch -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                    class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="flex justify-between items-end">
+                      <div>
+                        <h3 class="text-2xl font-bold text-white">Laikipia Branch</h3>
+                        <p class="text-yellow-300 font-medium">Rift Valley Region</p>
+                      </div>
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                        <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-yellow-400" fill="currentColor" viewBox="0 0 8 8">
+                          <circle cx="4" cy="4" r="3" />
+                        </svg>
+                        Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class="text-gray-600 mb-4">
+                    This branch works with students from Laikipia University and connects with communities across the
+                    Rift
+                    Valley region.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex space-x-1 text-yellow-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm font-medium text-gray-700">Laikipia, Kenya</span>
+                    </div>
+                    <button
+                      class="inline-flex items-center text-yellow-600 font-medium hover:text-yellow-700 transition-colors">
+                      Learn more
+                      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Coming Soon Card -->
+              <div
+                class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+                  <div
+                    class="w-full h-60 bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center">
+                    <div class="text-center p-6">
+                      <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-white/10 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h3 class="text-2xl font-bold text-white mb-2">New Branch Coming Soon</h3>
+                      <p class="text-blue-100 mb-6">We're expanding to more regions across the country</p>
+                      <button
+                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                        Suggest a Location
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <div class="ml-3">
+                      <p class="text-sm text-gray-600">
+                        <span class="font-medium text-blue-600">Next branch opening</span> in Q3 2025
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="relative overflow-hidden h-60">
-              <img src="@/assets/images/bg.jpg" alt="Kisii Branch"
-                class="w-full h-full object-cover transition duration-500 hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Kisii Branch</h3>
-                <p class="text-yellow-400">Nyanza Region</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600">
-                Serving the Nyanza region with members from Kisii University, Rongo University and surrounding
-                communities.
-              </p>
-              <button
-                class="mt-4 text-yellow-600 font-semibold text-sm flex items-center hover:text-yellow-700 transition">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-            </div>
+          <!-- Scroll Indicators -->
+          <div class="flex justify-center mt-6 space-x-2">
+            <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+            <button class="w-3 h-3 rounded-full bg-yellow-500"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-300"></button>
           </div>
+        </div>
 
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="relative overflow-hidden h-60">
-              <img src="@/assets/images/background.jpg" alt="Kirinyaga Branch"
-                class="w-full h-full object-cover transition duration-500 hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Kirinyaga Branch</h3>
-                <p class="text-yellow-400">Central Kenya</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600">
-                Our Central Kenya branch engaging students from Kirinyaga University, Laikipia University and
-                surrounding areas.
-              </p>
-              <button
-                class="mt-4 text-yellow-600 font-semibold text-sm flex items-center hover:text-yellow-700 transition">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="relative overflow-hidden h-60">
-              <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
-                class="w-full h-full object-cover transition duration-500 hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Kiambu Branch</h3>
-                <p class="text-yellow-400">Central Kenya</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600">
-                Serving Kiambu County with members from various tertiary institutions and local communities.
-              </p>
-              <button
-                class="mt-4 text-yellow-600 font-semibold text-sm flex items-center hover:text-yellow-700 transition">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div class="relative overflow-hidden h-60">
-              <img src="@/assets/images/background.jpg" alt="Meru Branch"
-                class="w-full h-full object-cover transition duration-500 hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h3 class="text-xl font-bold text-white">Meru Branch</h3>
-                <p class="text-yellow-400">Eastern Kenya</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600">
-                Our Eastern Kenya branch engaging students and youth from Meru County and surrounding regions.
-              </p>
-              <button
-                class="mt-4 text-yellow-600 font-semibold text-sm flex items-center hover:text-yellow-700 transition">
-                Learn more
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <div
-              class="relative overflow-hidden h-60 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <div class="text-center p-6">
-                <h3 class="text-xl font-bold text-white mb-2">New Branch Coming Soon</h3>
-                <p class="text-yellow-200">We're expanding to more regions</p>
-                <button
-                  class="mt-4 bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold text-sm hover:bg-gray-100 transition">
-                  Suggest a Location
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="mt-12 text-center">
+          <button
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all">
+            Scroll to view all branches
+            <svg class="ml-3 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -409,9 +725,14 @@ const { teamMembers } = useMembers();
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Horizontal Scroll Styles */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom hover effects */
@@ -421,5 +742,10 @@ html {
 
 .transform-hover:hover {
   transform: translateY(-5px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 </style>

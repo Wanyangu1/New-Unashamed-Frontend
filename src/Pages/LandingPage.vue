@@ -4,7 +4,85 @@ import { format } from 'date-fns';
 import TheNavbar from '@/components/TheNavbar.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import { useEvents } from "@/composables/useEvent";
+import testimonial1 from '@/assets/images/testimonials/testimonial1.jpg'
+import testimonial2 from '@/assets/images/testimonials/testimonial2.jpg'
+import testimonial3 from '@/assets/images/testimonials/testimonial3.jpg'
 
+// Enhanced parallax effect
+const handleScroll = () => {
+  const parallaxBg = document.querySelector('.parallax-bg')
+  const heroContent = document.querySelector('.hero-content')
+  if (parallaxBg && heroContent) {
+    const scrollPosition = window.pageYOffset
+    parallaxBg.style.transform = `translateY(${scrollPosition * 0.3}px)`
+    heroContent.style.transform = `translateY(${scrollPosition * 0.2}px)`
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+
+  // Animate counters
+  const counters = document.querySelectorAll('.counter')
+  const speed = 200
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target')
+      const count = +counter.innerText
+      const increment = target / speed
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment)
+        setTimeout(updateCount, 1)
+      } else {
+        counter.innerText = target + '+' // Add plus sign after animation
+      }
+    }
+    updateCount()
+  })
+})
+const testimonials = [
+  {
+    name: "Lilian W.",
+    role: "Community Member",
+    quote: "The food drive during the pandemic saved my family. We were struggling, and Unashamed Charity Group gave us hope when we needed it most.",
+    rating: 5,
+    image: testimonial1
+  },
+  {
+    name: "Peris W.",
+    role: "Volunteer",
+    quote: "Volunteering with Unashamed has changed my perspective on service. The organization's commitment to the community is truly inspiring.",
+    rating: 5,
+    image: testimonial2
+  },
+  {
+    name: "Sarah R.",
+    role: "Community Partner",
+    quote: "Their door-to-door outreach program has brought real change to our neighborhood. The youth engagement is particularly transformative.",
+    rating: 5,
+    image: testimonial3
+  }
+]
+const values = [
+  {
+    title: "Compassion",
+    description: "We approach every individual with empathy and understanding, recognizing the inherent dignity in all people.",
+    icon: "fas fa-heart",
+    color: "red"
+  },
+  {
+    title: "Integrity",
+    description: "We maintain the highest ethical standards, ensuring transparency and accountability in all our actions.",
+    icon: "fas fa-shield-alt",
+    color: "blue"
+  },
+  {
+    title: "Community",
+    description: "We believe in the power of collective action and the strength that comes from unity and collaboration.",
+    icon: "fas fa-hands-helping",
+    color: "green"
+  }
+]
 const { upcomingEvents, fetchEvents } = useEvents();
 
 onMounted(() => {
@@ -18,7 +96,7 @@ onMounted(() => {
     <TheNavbar />
 
     <!-- Hero Section with Parallax -->
-    <section class="hero-parallax relative h-screen min-h-[300px] overflow-hidden">
+    <section class="hero-parallax relative h-[90vh] min-h-[300px] overflow-hidden">
       <div class="parallax-bg absolute inset-0 bg-[url('@/assets/images/bg.jpg')] bg-cover bg-center bg-no-repeat"
         data-parallax="scroll" data-image-src="@/assets/images/bg.jpg" data-speed="0.4"></div>
 
@@ -81,22 +159,37 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Stats Section with Animated Counters -->
-    <section class="py-12 bg-gradient-to-b from-green-700 to-green-800 text-white">
+    <!-- Enhanced Stats Section with Icons -->
+    <section class="py-2 bg-gradient-to-b from-green-700 to-green-800 text-white">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div class="p-8 group">
-            <div class="text-6xl font-bold mb-4 counter" data-target="500">0</div>
+          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
+            <div class="flex justify-center mb-2">
+              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-users text-3xl text-green-300"></i>
+              </div>
+            </div>
+            <div class="text-5xl font-bold mb-2 counter" data-target="500">0</div>
             <div class="text-xl font-light uppercase tracking-wider">Lives Impacted</div>
             <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
           </div>
-          <div class="p-8 group">
-            <div class="text-6xl font-bold mb-4 counter" data-target="50">0</div>
+          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
+            <div class="flex justify-center mb-2">
+              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-hands-helping text-3xl text-green-300"></i>
+              </div>
+            </div>
+            <div class="text-5xl font-bold mb-2 counter" data-target="50">0</div>
             <div class="text-xl font-light uppercase tracking-wider">Dedicated Volunteers</div>
             <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
           </div>
-          <div class="p-8 group">
-            <div class="text-6xl font-bold mb-4 counter" data-target="20">0</div>
+          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
+            <div class="flex justify-center mb-2">
+              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-project-diagram text-3xl text-green-300"></i>
+              </div>
+            </div>
+            <div class="text-5xl font-bold mb-2 counter" data-target="20">0</div>
             <div class="text-xl font-light uppercase tracking-wider">Community Projects</div>
             <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
           </div>
@@ -134,26 +227,22 @@ onMounted(() => {
           <!-- Image with Floating Elements -->
           <div class="lg:w-1/2 relative">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img src="@/assets/images/davy3.png" alt="Our Mission" class="w-full h-auto object-cover">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-                <div class="text-white">
-                  <h3 class="text-2xl font-bold mb-2">Creating Lasting Change</h3>
-                  <p class="text-gray-200">Through compassion and collective action</p>
-                </div>
-              </div>
+              <img src="@/assets/images/Events/Group.jpg" alt="Our Mission" class="w-full h-auto object-cover">
             </div>
 
+
             <!-- Floating Stats -->
-            <div class="absolute -bottom-8 -left-8 bg-white rounded-xl shadow-xl p-6 w-64 z-10">
+            <div class="absolute -bottom-18 -left-8 bg-white rounded-xl shadow-xl p-6 w-64 z-10">
               <div class="text-green-600 text-4xl font-bold mb-2">2019</div>
               <div class="text-gray-600">Founded with a vision for change</div>
             </div>
 
-            <div class="absolute -top-8 -right-8 bg-green-600 text-white rounded-xl shadow-xl p-6 w-64 z-10">
-              <div class="text-4xl font-bold mb-2">5+</div>
+            <div class="absolute -top-14 -right-8 bg-green-600 text-white rounded-xl shadow-xl p-6 w-64 z-10">
+              <div class="text-4xl font-bold mb-2">8+</div>
               <div>Branches Nationwide</div>
             </div>
           </div>
+
 
           <!-- Content -->
           <div class="lg:w-1/2">
@@ -217,14 +306,15 @@ onMounted(() => {
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="event in upcomingEvents" :key="event.id"
             class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-xl group">
-            <div class="relative h-48 overflow-hidden">
-              <img src="@/assets/images/bg.jpg" alt="Event"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="relative h-48 bg-contain overflow-hidden">
+              <img src="@/assets/images/event.png" alt="Event"
+                class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
               <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                 {{ format(new Date(event.date), 'MMM dd') }}
               </div>
             </div>
+
             <div class="p-6">
               <h3 class="text-xl font-bold mb-3 text-gray-800">{{ event.title }}</h3>
               <p class="text-gray-600 mb-6">{{ event.description }}</p>
@@ -254,19 +344,19 @@ onMounted(() => {
         </div>
       </div>
     </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-green-700 text-white">
-      <div class="container mx-auto px-6">
+    <!-- Testimonials Section with animated cards -->
+    <section class="py-20 bg-green-700 text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[url('@/assets/images/pattern.png')] bg-repeat"></div>
+      <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
           <span class="text-green-300 font-semibold tracking-wider">VOICES OF IMPACT</span>
           <h2 class="text-4xl font-bold mt-3">Stories That Inspire</h2>
-          <div class="w-20 h-1 bg-green-400 mx-auto mt-4"></div>
+          <div class="w-20 h-1 bg-green-400 mx-auto mt-4 animate-grow"></div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <div v-for="(testimonial, index) in testimonials" :key="index"
-            class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/10 hover:border-green-400/30 transition-all duration-500">
+            class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/10 hover:border-green-400/30 transition-all duration-500 transform hover:-translate-y-2 testimonial-card">
             <div class="flex items-center mb-6">
               <img :src="testimonial.image" :alt="testimonial.name"
                 class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-green-400">
@@ -280,8 +370,7 @@ onMounted(() => {
               {{ testimonial.quote }}
             </p>
             <div class="text-yellow-400">
-              <i v-for="star in 5" :key="star" class="fas fa-star"
-                :class="{ 'text-gray-400': star > testimonial.rating }"></i>
+              <i v-for="star in 5" :key="star" class="fas fa-star"></i>
             </div>
           </div>
         </div>
@@ -322,80 +411,6 @@ onMounted(() => {
     <TheFooter />
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      values: [
-        {
-          title: "Compassion",
-          description: "We approach every individual with empathy and understanding, recognizing the inherent dignity in all people.",
-          icon: "fas fa-heart",
-          color: "red"
-        },
-        {
-          title: "Integrity",
-          description: "We maintain the highest ethical standards, ensuring transparency and accountability in all our actions.",
-          icon: "fas fa-shield-alt",
-          color: "blue"
-        },
-        {
-          title: "Community",
-          description: "We believe in the power of collective action and the strength that comes from unity and collaboration.",
-          icon: "fas fa-hands-helping",
-          color: "green"
-        }
-      ],
-      testimonials: [
-        {
-          name: "Sarah J.",
-          role: "Community Member",
-          quote: "The food drive during the pandemic saved my family. We were struggling, and Unashamed Charity Group gave us hope when we needed it most.",
-          rating: 5,
-          image: "@/assets/images/bg.jpg"
-        },
-        {
-          name: "Michael T.",
-          role: "Volunteer",
-          quote: "Volunteering with Unashamed has changed my perspective on service. The organization's commitment to the community is truly inspiring.",
-          rating: 4.5,
-          image: "@/assets/images/bg.jpg"
-        },
-        {
-          name: "Irihose David",
-          role: "Community Partner",
-          quote: "Their door-to-door outreach program has brought real change to our neighborhood. The youth engagement is particularly transformative.",
-          rating: 5,
-          image: "@/assets/images/bg.jpg"
-        }
-      ]
-    }
-  },
-  mounted() {
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 1);
-        } else {
-          counter.innerText = target;
-        }
-      }
-
-      updateCount();
-    });
-  }
-}
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');

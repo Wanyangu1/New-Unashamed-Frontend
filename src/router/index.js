@@ -4,9 +4,9 @@ import ContactPage from '@/Pages/ContactPage.vue'
 import GalleryPage from '@/Pages/GalleryPage.vue'
 import AboutPage from '@/Pages/AboutPage.vue'
 import ImpactPage from '@/Pages/ImpactPage.vue'
-import InvolvedPage from '@/Pages/InvolvedPage.vue'
 import BlogPage from '@/Pages/BlogPage.vue'
 import DonationPage from '@/Pages/DonationPage.vue'
+import ProgramPage from '@/Pages/ProgramPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,11 +37,6 @@ const router = createRouter({
       component: ImpactPage,
     },
     {
-      path: '/get-involved',
-      name: 'get-involved',
-      component: InvolvedPage,
-    },
-    {
       path: '/blog',
       name: 'blog',
       component: BlogPage,
@@ -50,6 +45,11 @@ const router = createRouter({
       path: '/donate',
       name: 'donate',
       component: DonationPage,
+    },
+    {
+      path: '/programs',
+      name: 'programs',
+      component: ProgramPage,
     },
   ],
 })

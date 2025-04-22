@@ -1,6 +1,109 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue';
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import bgImg from '@/assets/images/bg.jpg'
+//import backgroundImg from '@/assets/images/background.jpg'
+import backgdImg from '@/assets/images/Child.webp'
+
+
+const impactItems = [
+  {
+    title: "Youth Leadership Development",
+    description: "Equipping the next generation to lead with purpose and courage through comprehensive training programs."
+  },
+  {
+    title: "Community Projects",
+    description: "From building schools to mental health awareness, we create tangible change where it's needed most."
+  },
+  {
+    title: "Global Advocacy",
+    description: "Hosting conferences and events to amplify voices of unashamed individuals worldwide."
+  }
+];
+
+const activities = [
+  {
+    title: "Feeding the Needy",
+    description: "Providing meals to vulnerable families through food drives and community partnerships.",
+    category: "Community Support",
+    color: "green",
+    icon: "FoodIcon",
+    image: new URL('@/assets/images/Events/Feeding1.jpg', import.meta.url).href
+  },
+  {
+    title: "Prom Night",
+    description: "Creating unforgettable moments for underprivileged students to celebrate their achievements.",
+    category: "Youth Empowerment",
+    color: "blue",
+    icon: "PartyIcon",
+    image: new URL('@/assets/images/Events/Prom.jpg', import.meta.url).href
+  },
+  {
+    title: "Fun Days",
+    description: "Bringing smiles through games, sports and activities in safe environments.",
+    category: "Community Building",
+    color: "yellow",
+    icon: "HappyIcon",
+    image: new URL('@/assets/images/Events/fun.jpg', import.meta.url).href
+  },
+  {
+    title: "Mentorship Programs",
+    description: "Guiding youth with skills and confidence to build brighter futures.",
+    category: "Education",
+    color: "red",
+    icon: "MentorIcon",
+    image: new URL('@/assets/images/Events/mentorship.png', import.meta.url).href
+  },
+  {
+    title: "Talent Nurturing",
+    description: "Identifying and developing talents in arts, music, sports and more.",
+    category: "Youth Development",
+    color: "green",
+    icon: "TalentIcon",
+    image: new URL('@/assets/images/background.jpg', import.meta.url).href
+  },
+  {
+    title: "Cooking Classes",
+    description: "Teaching practical skills while promoting healthy eating and community.",
+    category: "Life Skills",
+    color: "purple",
+    icon: "CookingIcon",
+    image: new URL('@/assets/images/feeding.jpg', import.meta.url).href
+  }
+];
+
+const objectives = [
+  {
+    title: "Beacon of Hope",
+    description: "Serve as a catalyst for empowerment and transformation in marginalized communities."
+  },
+  {
+    title: "Spiritual Growth",
+    description: "Foster environments that promote faith-based development and values."
+  },
+  {
+    title: "Sustainable Change",
+    description: "Create initiatives with lasting impact through collaboration and innovation."
+  }
+];
+
+// Enhanced parallax effect
+const handleScroll = () => {
+  const parallaxBg = document.querySelector('.parallax-bg');
+  if (parallaxBg) {
+    const scrollPosition = window.pageYOffset;
+    parallaxBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -9,15 +112,18 @@ import TheFooter from "@/components/TheFooter.vue";
 
     <!-- Enhanced Hero Section with Parallax -->
     <div class="hero-parallax relative h-screen min-h-[600px] overflow-hidden">
-      <div class="parallax-bg absolute inset-0 bg-[url('@/assets/images/bg.jpg')] bg-cover bg-center bg-no-repeat"
-        data-parallax="scroll" data-image-src="@/assets/images/bg.jpg" data-speed="0.4"></div>
+      <div class="parallax-bg absolute inset-0 bg-cover bg-center bg-no-repeat"
+        :style="{ backgroundImage: `url(${bgImg})` }"></div>
+
 
       <!-- Gradient Overlay -->
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-      <!-- Floating Elements -->
+      <!-- Floating Elements with enhanced animation -->
       <div class="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-yellow-400/20 animate-float1"></div>
       <div class="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-green-500/20 animate-float2"></div>
+      <div class="absolute top-1/3 right-1/3 w-20 h-20 rounded-full bg-blue-400/20 animate-float3"></div>
+      <div class="absolute bottom-1/4 left-1/3 w-12 h-12 rounded-full bg-purple-500/20 animate-float4"></div>
 
       <!-- Content -->
       <div
@@ -178,22 +284,16 @@ import TheFooter from "@/components/TheFooter.vue";
           <!-- Image -->
           <div class="lg:w-1/2 relative">
             <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src="@/assets/images/background.jpg" alt="Our Objectives" class="w-full h-auto object-cover" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-                <div class="text-white">
-                  <h3 class="text-2xl font-bold mb-2">Creating Lasting Change</h3>
-                  <p class="text-gray-200">Through collaboration and innovation</p>
-                </div>
-              </div>
+              <img :src="backgdImg" alt="Our Objectives" class="w-full h-auto object-cover" />
             </div>
 
             <!-- Stats Cards -->
-            <div class="absolute -bottom-10 -left-10 bg-white rounded-xl shadow-lg p-6 w-64 z-10">
+            <div class="absolute -bottom-18 -left-10 bg-white rounded-xl shadow-lg p-6 w-64 z-10">
               <div class="text-yellow-500 text-4xl font-bold mb-2">50+</div>
               <div class="text-gray-600">Community Projects Completed</div>
             </div>
 
-            <div class="absolute -top-10 -right-10 bg-green-500 text-white rounded-xl shadow-lg p-6 w-64 z-10">
+            <div class="absolute -top-15 -right-10 bg-green-500 text-white rounded-xl shadow-lg p-6 w-64 z-10">
               <div class="text-4xl font-bold mb-2">1000+</div>
               <div>Lives Impacted Annually</div>
             </div>
@@ -206,93 +306,6 @@ import TheFooter from "@/components/TheFooter.vue";
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      impactItems: [
-        {
-          title: "Youth Leadership Development",
-          description: "Equipping the next generation to lead with purpose and courage through comprehensive training programs."
-        },
-        {
-          title: "Community Projects",
-          description: "From building schools to mental health awareness, we create tangible change where it's needed most."
-        },
-        {
-          title: "Global Advocacy",
-          description: "Hosting conferences and events to amplify voices of unashamed individuals worldwide."
-        }
-      ],
-      activities: [
-        {
-          title: "Feeding the Needy",
-          description: "Providing meals to vulnerable families through food drives and community partnerships.",
-          category: "Community Support",
-          color: "green",
-          icon: "FoodIcon",
-          image: "@/assets/images/background.jpg"
-        },
-        {
-          title: "Prom Night",
-          description: "Creating unforgettable moments for underprivileged students to celebrate their achievements.",
-          category: "Youth Empowerment",
-          color: "blue",
-          icon: "PartyIcon",
-          image: "@/assets/images/background.jpg"
-        },
-        {
-          title: "Fun Days",
-          description: "Bringing smiles through games, sports and activities in safe environments.",
-          category: "Community Building",
-          color: "yellow",
-          icon: "HappyIcon",
-          image: "@/assets/images/background.jpg"
-        },
-        {
-          title: "Mentorship Programs",
-          description: "Guiding youth with skills and confidence to build brighter futures.",
-          category: "Education",
-          color: "red",
-          icon: "MentorIcon",
-          image: "@/assets/images/background.jpg"
-        },
-        {
-          title: "Talent Nurturing",
-          description: "Identifying and developing talents in arts, music, sports and more.",
-          category: "Youth Development",
-          color: "green",
-          icon: "TalentIcon",
-          image: "@/assets/images/background.jpg"
-        },
-        {
-          title: "Cooking Classes",
-          description: "Teaching practical skills while promoting healthy eating and community.",
-          category: "Life Skills",
-          color: "purple",
-          icon: "CookingIcon",
-          image: "@/assets/images/background.jpg"
-        }
-      ],
-      objectives: [
-        {
-          title: "Beacon of Hope",
-          description: "Serve as a catalyst for empowerment and transformation in marginalized communities."
-        },
-        {
-          title: "Spiritual Growth",
-          description: "Foster environments that promote faith-based development and values."
-        },
-        {
-          title: "Sustainable Change",
-          description: "Create initiatives with lasting impact through collaboration and innovation."
-        }
-      ]
-    }
-  }
-}
-</script>
-
 <style scoped>
 .hero-parallax {
   background-attachment: fixed;
@@ -301,15 +314,29 @@ export default {
   background-size: cover;
 }
 
+.parallax-bg {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+  background-attachment: fixed;
+}
+
 @keyframes float1 {
 
   0%,
   100% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-50px) translateX(30px) rotate(5deg);
   }
 
   50% {
-    transform: translateY(-40px) translateX(20px);
+    transform: translateY(-20px) translateX(-20px) rotate(-5deg);
+  }
+
+  75% {
+    transform: translateY(-40px) translateX(20px) rotate(3deg);
   }
 }
 
@@ -317,20 +344,60 @@ export default {
 
   0%,
   100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(40px) translateX(-30px) scale(1.1);
+  }
+
+  50% {
+    transform: translateY(10px) translateX(20px) scale(0.95);
+  }
+
+  75% {
+    transform: translateY(30px) translateX(-20px) scale(1.05);
+  }
+}
+
+@keyframes float3 {
+
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
 
   50% {
-    transform: translateY(30px) translateX(-30px);
+    transform: translateY(-30px) translateX(15px);
+  }
+}
+
+@keyframes float4 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(20px) translateX(-15px);
   }
 }
 
 .animate-float1 {
-  animation: float1 8s ease-in-out infinite;
+  animation: float1 12s ease-in-out infinite;
 }
 
 .animate-float2 {
-  animation: float2 10s ease-in-out infinite;
+  animation: float2 14s ease-in-out infinite;
+}
+
+.animate-float3 {
+  animation: float3 10s ease-in-out infinite;
+}
+
+.animate-float4 {
+  animation: float4 8s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -376,11 +443,11 @@ export default {
   }
 
   40% {
-    transform: translateY(-20px) translateX(-50%);
+    transform: translateY(-30px) translateX(-50%);
   }
 
   60% {
-    transform: translateY(-10px) translateX(-50%);
+    transform: translateY(-15px) translateX(-50%);
   }
 }
 
