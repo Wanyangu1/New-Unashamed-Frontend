@@ -8,14 +8,23 @@ import testimonial1 from '@/assets/images/testimonials/testimonial1.jpg'
 import testimonial2 from '@/assets/images/testimonials/testimonial2.jpg'
 import testimonial3 from '@/assets/images/testimonials/testimonial3.jpg'
 
-// Enhanced parallax effect
+// Enhanced parallax effect with bubble movement
 const handleScroll = () => {
   const parallaxBg = document.querySelector('.parallax-bg')
   const heroContent = document.querySelector('.hero-content')
+  const bubbles = document.querySelectorAll('.parallax-bubble')
+
   if (parallaxBg && heroContent) {
     const scrollPosition = window.pageYOffset
     parallaxBg.style.transform = `translateY(${scrollPosition * 0.3}px)`
     heroContent.style.transform = `translateY(${scrollPosition * 0.2}px)`
+
+    // Add parallax effect to bubbles
+    bubbles.forEach((bubble, index) => {
+      // Each bubble moves at a different speed for depth effect
+      const speed = 0.1 + (index * 0.05)
+      bubble.style.transform = `translateY(${scrollPosition * speed}px)`
+    })
   }
 }
 
@@ -97,18 +106,33 @@ onMounted(() => {
 
     <!-- Hero Section with Parallax -->
     <section class="hero-parallax relative h-[90vh] min-h-[300px] overflow-hidden">
-      <div class="parallax-bg absolute inset-0 bg-[url('@/assets/images/bg.jpg')] bg-cover bg-center bg-no-repeat"
+      <div
+        class="parallax-bg absolute inset-0 bg-[url('@/assets/images/Events/bg1.jpeg')] bg-cover bg-center bg-no-repeat"
         data-parallax="scroll" data-image-src="@/assets/images/bg.jpg" data-speed="0.4"></div>
 
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
 
-      <!-- Floating Elements -->
-      <div class="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-green-400/20 animate-float1"></div>
-      <div class="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-white/20 animate-float2"></div>
+      <!-- Floating Elements - Added more bubbles with different animations -->
+      <div class="parallax-bubble absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-green-500/50 animate-float1">
+      </div>
+      <div class="parallax-bubble absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-white/30 animate-float2">
+      </div>
+      <div class="parallax-bubble absolute top-1/5 right-1/5 w-8 h-8 rounded-full bg-blue-400/40 animate-float5"></div>
+
+      <div class="parallax-bubble absolute top-1/3 right-1/3 w-12 h-12 rounded-full bg-yellow-700/30 animate-float3">
+      </div>
+      <div class="parallax-bubble absolute bottom-1/4 left-1/3 w-20 h-20 rounded-full bg-purple-400/30 animate-float4">
+      </div>
+      <div class="parallax-bubble absolute top-1/5 right-1/5 w-8 h-8 rounded-full bg-blue-400/40 animate-float5"></div>
+      <div class="parallax-bubble absolute bottom-1/5 left-1/5 w-28 h-28 rounded-full bg-pink-400/30 animate-float6">
+      </div>
+      <div class="parallax-bubble absolute top-2/3 left-2/3 w-10 h-10 rounded-full bg-teal-400/30 animate-float7"></div>
+      <div class="parallax-bubble absolute bottom-2/3 right-2/3 w-18 h-18 rounded-full bg-orange-400/30 animate-float8">
+      </div>
 
       <!-- Content -->
-      <div class="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 lg:px-24 text-white">
+      <div class="hero-content relative z-10 h-full flex flex-col justify-center px-6 md:px-16 lg:px-24 text-white">
         <div class="mb-6 animate-fade-in">
           <span
             class="inline-block px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full text-green-300 font-medium text-sm tracking-wider">
@@ -159,6 +183,7 @@ onMounted(() => {
       </div>
     </section>
 
+    <!-- Rest of your template remains the same -->
     <!-- Enhanced Stats Section with Icons -->
     <section class="py-2 bg-gradient-to-b from-green-700 to-green-800 text-white">
       <div class="container mx-auto px-6">
@@ -169,7 +194,7 @@ onMounted(() => {
                 <i class="fas fa-users text-3xl text-green-300"></i>
               </div>
             </div>
-            <div class="text-5xl font-bold mb-2 counter" data-target="500">0</div>
+            <div class="text-5xl font-bold mb-2 counter" data-target="5000">0</div>
             <div class="text-xl font-light uppercase tracking-wider">Lives Impacted</div>
             <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
           </div>
@@ -179,7 +204,7 @@ onMounted(() => {
                 <i class="fas fa-hands-helping text-3xl text-green-300"></i>
               </div>
             </div>
-            <div class="text-5xl font-bold mb-2 counter" data-target="50">0</div>
+            <div class="text-5xl font-bold mb-2 counter" data-target="300">0</div>
             <div class="text-xl font-light uppercase tracking-wider">Dedicated Volunteers</div>
             <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
           </div>
@@ -446,12 +471,108 @@ onMounted(() => {
   }
 }
 
+@keyframes float3 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(-20px) rotate(10deg);
+  }
+}
+
+@keyframes float4 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(25px) translateX(15px);
+  }
+}
+
+@keyframes float5 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-15px) translateX(10px);
+  }
+}
+
+@keyframes float6 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(40px) translateX(-15px);
+  }
+}
+
+@keyframes float7 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-25px) translateX(-25px);
+  }
+}
+
+@keyframes float8 {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(15px) translateX(25px);
+  }
+}
+
 .animate-float1 {
   animation: float1 8s ease-in-out infinite;
 }
 
 .animate-float2 {
   animation: float2 10s ease-in-out infinite;
+}
+
+.animate-float3 {
+  animation: float3 9s ease-in-out infinite;
+}
+
+.animate-float4 {
+  animation: float4 11s ease-in-out infinite;
+}
+
+.animate-float5 {
+  animation: float5 7s ease-in-out infinite;
+}
+
+.animate-float6 {
+  animation: float6 12s ease-in-out infinite;
+}
+
+.animate-float7 {
+  animation: float7 10s ease-in-out infinite;
+}
+
+.animate-float8 {
+  animation: float8 8s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -529,5 +650,13 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2f855a;
+}
+
+/* Bubble styles */
+.parallax-bubble {
+  filter: blur(1px);
+  opacity: 0.8;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
 }
 </style>

@@ -16,7 +16,7 @@ import sanitaryImage from '@/assets/images/Events/cleaning.jpg'
 import streetsImage from '@/assets/images/Events/streets1.jpg'
 import fooddriveImage from '@/assets/images/Events/feeding1.jpg'
 import youngmomsImage from '@/assets/images/Events/youngmoms.jpg'
-import bgImg from '@/assets/images/bg.jpg'
+import bgImg from '@/assets/images/Events/bg2.jpg'
 
 
 const programs = ref([
@@ -137,6 +137,7 @@ const filteredPrograms = computed(() => {
   if (activeCategory.value === 'All') return programs.value
   return programs.value.filter(program => program.category === activeCategory.value)
 })
+
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -161,7 +162,10 @@ onMounted(() => {
     <!-- Hero Section -->
     <section class="relative h-[40vh] min-h-[400px] overflow-hidden flex items-center">
       <div class="absolute inset-0 bg-black/40 z-0"></div>
-      <div class="parallax-bg absolute inset-0 bg-cover bg-center" :style="{ backgroundImage: `url(${bgImg})` }"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30 z-10"></div>
+      <div class="parallax-bg absolute inset-0 bg-cover bg-center brightness-75"
+        :style="{ backgroundImage: `url(${bgImg})`, filter: 'brightness(60%)' }"></div>
+
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl mx-auto text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white animate-fade-in-up">Our Life-Changing Programs</h1>

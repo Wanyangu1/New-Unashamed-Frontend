@@ -191,7 +191,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/background.jpg" alt=" Branch"
+                  <img src="@/assets/images/Events/streets.jpg" alt=" Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -240,7 +240,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/bg.jpg" alt="Kisii Branch"
+                  <img src="@/assets/images/Events/group.jpg" alt="Kisii Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -288,7 +288,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/background.jpg" alt="Kirinyaga Branch"
+                  <img src="@/assets/images/Events/Kirinyaga.jpg" alt="Kirinyaga Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -336,7 +336,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                  <img src="@/assets/images/Events/Kiambu.jpg" alt="Kiambu Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -381,7 +381,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/background.jpg" alt="Kiambu Branch"
+                  <img src="@/assets/images/Events/Meru.jpg" alt="Kiambu Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -427,7 +427,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                  <img src="@/assets/images/Events/rongo.jpg" alt="Kiambu Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -473,7 +473,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/background.jpg" alt=" Branch"
+                  <img src="@/assets/images/Events/fun.jpg" alt=" Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">
@@ -520,7 +520,7 @@ const { teamMembers } = useMembers();
               <div
                 class="group flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
-                  <img src="@/assets/images/bg.jpg" alt="Kiambu Branch"
+                  <img src="@/assets/images/Events/Laikipia.jpg" alt="Kiambu Branch"
                     class="w-full h-60 object-cover transition duration-700 group-hover:scale-105" />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div class="absolute bottom-0 left-0 p-6 w-full">

@@ -6,14 +6,15 @@ import TheFooter from '@/components/TheFooter.vue'
 // Local image imports
 import foodImage from '@/assets/images/Events/Feeding1.jpg'
 import shelterImage from '@/assets/images/Events/Feeding.jpg'
-import educationImage from '@/assets/images/Events/Feeding1.jpg'
+import educationImage from '@/assets/images/Events/bg6.jpg'
+import heroBgImage from '@/assets/images/Events/bg7.jpg' // Add your local hero background image
 
-const impactStats = [
+const impactStats = ref([
   { id: 1, label: 'People Helped', value: 1200 },
   { id: 2, label: 'Meals Served', value: 8500 },
   { id: 3, label: 'Shelter Nights', value: 200 },
   { id: 4, label: 'Community Projects', value: 20 }
-]
+])
 
 const donationCauses = [
   {
@@ -41,7 +42,7 @@ const donationCauses = [
 
 const donationAmounts = [10, 25, 50, 100, 250]
 const frequencies = ['One-Time', 'Monthly', 'Yearly']
-const paymentMethods = ['M-Pesa', 'PayPal', 'Sendwave', 'Credit Card']
+const paymentMethods = ['M-Pesa', 'PayPal', 'Sendwave'] // Removed Credit Card
 
 const selectedAmount = ref(50)
 const customAmount = ref(null)
@@ -89,9 +90,13 @@ onMounted(() => {
   <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
     <!-- Navigation -->
     <TheNavbar />
-    <!-- Hero Section -->
-    <section class="relative bg-green-700 text-white py-20 md:py-28">
-      <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <!-- Hero Section with local background image -->
+    <section class="relative text-white py-20 md:py-28">
+      <div class="absolute inset-0 z-0">
+        <img :src="heroBgImage" alt="Hero background" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl mx-auto text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Generosity Changes Lives</h1>
@@ -211,11 +216,10 @@ onMounted(() => {
                     </button>
                     <div v-if="showMpesaInstructions" class="mt-3 space-y-2 text-sm">
                       <p>1. Go to M-Pesa on your phone</p>
-                      <p>2. Select "Lipa Na M-Pesa"</p>
-                      <p>3. Select "Pay Bill"</p>
-                      <p>4. Enter business number: <span class="font-bold">0718826305</span></p>
-                      <p>5. Enter account number: <span class="font-bold">DONATION</span></p>
-                      <p>6. Enter amount: ${{ donationTotal }}</p>
+                      <p>2. Select "Send Money"</p>
+                      <p>3. Enter phone number: <span class="font-bold">0718826305</span></p>
+                      <p>4. Enter amount: Ksh{{ donationTotal }}</p>
+                      <p>5. Include "Donation" in the message</p>
                       <button @click="copyMpesaNumber" class="mt-2 text-yellow-400 flex items-center">
                         <i class="far fa-copy mr-1"></i> Copy M-Pesa Number
                       </button>
@@ -250,7 +254,7 @@ onMounted(() => {
                       <p>1. Open the Sendwave app</p>
                       <p>2. Select "Send Money"</p>
                       <p>3. Enter recipient number: <span class="font-bold">0718826305</span></p>
-                      <p>4. Enter amount: ${{ donationTotal }}</p>
+                      <p>4. Enter amount: Ksh{{ donationTotal }}</p>
                       <p>5. Include "Donation" in the notes</p>
                     </div>
                   </div>
@@ -289,48 +293,11 @@ onMounted(() => {
                   </div>
                 </div>
 
-                <div v-if="selectedMethod === 'Credit Card'" class="space-y-4">
-                  <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input type="text" id="name" required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all" />
-                  </div>
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" id="email" required
-                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all" />
-                  </div>
-                  <div>
-                    <label for="card" class="block text-sm font-medium text-gray-700 mb-1">Card Details</label>
-                    <div class="relative">
-                      <input type="text" id="card" placeholder="1234 1234 1234 1234" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all" />
-                      <div class="absolute right-3 top-2 flex space-x-1">
-                        <div class="h-8 w-12 bg-gray-200 rounded"></div>
-                        <div class="h-8 w-12 bg-gray-200 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div>
-                      <label for="expiry" class="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
-                      <input type="text" id="expiry" placeholder="MM/YY" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all" />
-                    </div>
-                    <div>
-                      <label for="cvc" class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
-                      <input type="text" id="cvc" placeholder="CVC" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all" />
-                    </div>
-                  </div>
-                </div>
-
                 <button type="button"
                   class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                  <span v-if="selectedMethod === 'M-Pesa'">Complete via M-Pesa</span>
+                  <span v-if="selectedMethod === 'M-Pesa'">Send Money via M-Pesa</span>
                   <span v-else-if="selectedMethod === 'PayPal'">Complete via PayPal</span>
                   <span v-else-if="selectedMethod === 'Sendwave'">Complete via Sendwave</span>
-                  <span v-else>Donate ${{ donationTotal }}</span>
                   <i class="fas fa-arrow-right ml-2"></i>
                 </button>
 
@@ -350,68 +317,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.parallax-bg {
-  background-attachment: fixed;
+.hero-section {
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  will-change: transform;
-}
-
-@keyframes float1 {
-
-  0%,
-  100% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-20px) translateX(10px) rotate(5deg);
-  }
-}
-
-@keyframes float2 {
-
-  0%,
-  100% {
-    transform: translateY(0) translateX(0) scale(1);
-  }
-
-  50% {
-    transform: translateY(20px) translateX(-10px) scale(1.05);
-  }
-}
-
-.animate-float1 {
-  animation: float1 8s ease-in-out infinite;
-}
-
-.animate-float2 {
-  animation: float2 10s ease-in-out infinite;
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
 }
 
 @keyframes grow {
@@ -441,10 +350,5 @@ onMounted(() => {
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
-}
-
-/* Counter animation styles */
-.counter {
-  display: inline-block;
 }
 </style>
