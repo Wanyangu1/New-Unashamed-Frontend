@@ -4,10 +4,10 @@ import TheNavbar from '@/components/TheNavbar.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
 // Local image imports
-import foodImage from '@/assets/images/Events/Feeding1.jpg'
-import shelterImage from '@/assets/images/Events/Feeding.jpg'
-import educationImage from '@/assets/images/Events/bg6.jpg'
-import heroBgImage from '@/assets/images/Events/bg7.jpg' // Add your local hero background image
+import foodImage from '@/assets/Images/Events/Feeding1.jpg'
+import shelterImage from '@/assets/Images/Events/Feeding.jpg'
+import educationImage from '@/assets/Images/Events/bg6.jpg'
+import heroBgImage from '@/assets/Images/Events/bg7.jpg' // Add your local hero background image
 
 const impactStats = ref([
   { id: 1, label: 'People Helped', value: 1200 },

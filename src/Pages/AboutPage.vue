@@ -2,15 +2,15 @@
 import { useMembers } from "@/composables/useMembers";
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
-import bg2Image from '@/assets/images/bg2.png';
-import streetsImage from '@/assets/images/Events/streets.jpg';
-import groupImage from '@/assets/images/Events/group.jpg';
-import kirinyagaImage from '@/assets/images/Events/Kirinyaga.jpg';
-import kiambuImage from '@/assets/images/Events/Kiambu.jpg';
-import meruImage from '@/assets/images/Events/Meru.jpg';
-import rongoImage from '@/assets/images/Events/rongo.jpg';
-import funImage from '@/assets/images/Events/fun.jpg';
-import laikipiaImage from '@/assets/images/Events/Laikipia.jpg';
+import bg2Image from '@/assets/Images/bg2.png';
+import streetsImage from '@/assets/Images/Events/streets.jpg';
+import groupImage from '@/assets/Images/Events/group.jpg';
+import kirinyagaImage from '@/assets/Images/Events/Kirinyaga.jpg';
+import kiambuImage from '@/assets/Images/Events/Kiambu.jpg';
+import meruImage from '@/assets/Images/Events/Meru.jpg';
+import rongoImage from '@/assets/Images/Events/rongo.jpg';
+import funImage from '@/assets/Images/Events/fun.jpg';
+import laikipiaImage from '@/assets/Images/Events/Laikipia.jpg';
 
 const { teamMembers } = useMembers();
 </script>
@@ -23,8 +23,8 @@ const { teamMembers } = useMembers();
     <section class="relative h-[90vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-gray-900">
       <!-- Parallax Background -->
       <div
-        class="absolute inset-0 bg-[url('@/assets/images/hero-parallax.jpg')] bg-cover bg-center bg-no-repeat opacity-70"
-        data-parallax="scroll" data-image-src="@/assets/images/hero-parallax.jpg" data-speed="0.4"></div>
+        class="absolute inset-0 bg-[url('@/assets/Images/hero-parallax.jpg')] bg-cover bg-center bg-no-repeat opacity-70"
+        data-parallax="scroll" data-image-src="@/assets/Images/hero-parallax.jpg" data-speed="0.4"></div>
 
       <!-- Animated Floating Elements -->
       <div class="absolute top-20 left-20 w-16 h-16 rounded-full bg-yellow-400/20 animate-float1"></div>

@@ -1,6 +1,7 @@
 <script setup>
 import TheNavbar from '@/components/TheNavbar.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import comingsoon from '@/assets/images/comingsoon.png';
 </script>
 
 <template>
@@ -12,7 +13,7 @@ import TheFooter from '@/components/TheFooter.vue'
       <p class="text-lg text-gray-500 mt-4 text-center sm:text-xl">
         We are working hard to launch our new feature. Stay tuned!
       </p>
-      <img src="@/assets/images/comingsoon.png" alt="Coming Soon"
+      <img :src="comingsoon" alt="Coming Soon"
         class="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 h-auto object-cover rounded-lg mt-6" />
     </main>
 
