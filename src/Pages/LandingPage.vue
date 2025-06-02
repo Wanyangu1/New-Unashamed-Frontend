@@ -7,6 +7,8 @@ import { useEvents } from "@/composables/useEvent";
 import testimonial1 from '@/assets/images/testimonials/testimonial1.jpg'
 import testimonial2 from '@/assets/images/testimonials/testimonial2.jpg'
 import testimonial3 from '@/assets/images/testimonials/testimonial3.jpg'
+import groupImage from '@/assets/images/Events/Group.jpg'
+import eventImage from '@/assets/images/event.png'
 
 // Enhanced parallax effect with bubble movement
 const handleScroll = () => {
@@ -261,7 +263,7 @@ onMounted(() => {
           <!-- Image with Floating Elements -->
           <div class="lg:w-1/2 relative">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img src="@/assets/images/Events/Group.jpg" alt="Our Mission" class="w-full h-auto object-cover">
+              <img :src="groupImage" alt="Our Mission" class="w-full h-auto object-cover" />
             </div>
 
 
@@ -341,7 +343,7 @@ onMounted(() => {
           <div v-for="event in upcomingEvents" :key="event.id"
             class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-xl group">
             <div class="relative h-48 bg-contain overflow-hidden">
-              <img src="@/assets/images/event.png" alt="Event"
+              <img :src="eventImage" alt="Event"
                 class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
               <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
