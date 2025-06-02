@@ -4,7 +4,7 @@ import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import bg2Image from '@/assets/Images/bg2.png';
 import streetsImage from '@/assets/Images/Events/streets.jpg';
-import groupImage from '@/assets/Images/Events/group.jpg';
+import groupImage from '@/assets/Images/Events/Group.jpg';
 import kirinyagaImage from '@/assets/Images/Events/Kirinyaga.jpg';
 import kiambuImage from '@/assets/Images/Events/Kiambu.jpg';
 import meruImage from '@/assets/Images/Events/Meru.jpg';
