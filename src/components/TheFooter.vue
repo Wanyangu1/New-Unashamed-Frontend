@@ -1,6 +1,6 @@
 <script setup>
-import usaFlag from '@/assets/images/usa.png';
-import logo from '@/assets/images/unashamed.png';
+import usaFlag from '@/assets/Images/usa.png';
+import logo from '@/assets/Images/unashamed.png';
 
 const socialLinks = [
   { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://facebook.com' },
