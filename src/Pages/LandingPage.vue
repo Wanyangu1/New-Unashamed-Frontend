@@ -4,9 +4,9 @@ import { format } from 'date-fns';
 import TheNavbar from '@/components/TheNavbar.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import { useEvents } from "@/composables/useEvent";
-import testimonial1 from '@/assets/images/testimonials/testimonial1.jpg'
-import testimonial2 from '@/assets/images/testimonials/testimonial2.jpg'
-import testimonial3 from '@/assets/images/testimonials/testimonial3.jpg'
+import testimonial1 from '@/assets/images/Testimonials/testimonial1.jpg'
+import testimonial2 from '@/assets/images/Testimonials/testimonial2.jpg'
+import testimonial3 from '@/assets/images/Testimonials/testimonial3.jpg'
 import groupImage from '@/assets/images/Events/Group.jpg'
 import eventImage from '@/assets/images/event.png'
 import bgImage from '@/assets/images/Events/bg1.jpeg';
