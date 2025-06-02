@@ -183,40 +183,49 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- Rest of your template remains the same -->
-    <!-- Enhanced Stats Section with Icons -->
-    <section class="py-2 bg-gradient-to-b from-green-700 to-green-800 text-white">
-      <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
-            <div class="flex justify-center mb-2">
-              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
-                <i class="fas fa-users text-3xl text-green-300"></i>
+    <!-- Reduced Size Stats Section with Branches -->
+    <section class="py-4 bg-gradient-to-b from-green-700 to-green-800 text-white text-sm">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+          <div class="p-2 group transform transition-all duration-300 hover:scale-105">
+            <div class="flex justify-center mb-1">
+              <div class="w-10 h-10 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-users text-xl text-green-300"></i>
               </div>
             </div>
-            <div class="text-5xl font-bold mb-2 counter" data-target="5000">0</div>
-            <div class="text-xl font-light uppercase tracking-wider">Lives Impacted</div>
-            <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+            <div class="text-3xl font-bold mb-1 counter" data-target="5000">0</div>
+            <div class="uppercase font-light tracking-wide">Lives Impacted</div>
+            <div class="w-10 h-0.5 bg-green-400 mx-auto mt-2 group-hover:w-16 transition-all duration-300"></div>
           </div>
-          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
-            <div class="flex justify-center mb-2">
-              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
-                <i class="fas fa-hands-helping text-3xl text-green-300"></i>
+          <div class="p-2 group transform transition-all duration-300 hover:scale-105">
+            <div class="flex justify-center mb-1">
+              <div class="w-10 h-10 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-hands-helping text-xl text-green-300"></i>
               </div>
             </div>
-            <div class="text-5xl font-bold mb-2 counter" data-target="300">0</div>
-            <div class="text-xl font-light uppercase tracking-wider">Dedicated Volunteers</div>
-            <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+            <div class="text-3xl font-bold mb-1 counter" data-target="300">0</div>
+            <div class="uppercase font-light tracking-wide">Dedicated Volunteers</div>
+            <div class="w-10 h-0.5 bg-green-400 mx-auto mt-2 group-hover:w-16 transition-all duration-300"></div>
           </div>
-          <div class="p-8 group transform transition-all duration-500 hover:scale-105">
-            <div class="flex justify-center mb-2">
-              <div class="w-15 h-15 rounded-full bg-green-600/30 flex items-center justify-center">
-                <i class="fas fa-project-diagram text-3xl text-green-300"></i>
+          <div class="p-2 group transform transition-all duration-300 hover:scale-105">
+            <div class="flex justify-center mb-1">
+              <div class="w-10 h-10 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-project-diagram text-xl text-green-300"></i>
               </div>
             </div>
-            <div class="text-5xl font-bold mb-2 counter" data-target="20">0</div>
-            <div class="text-xl font-light uppercase tracking-wider">Community Projects</div>
-            <div class="w-16 h-1 bg-green-400 mx-auto mt-4 group-hover:w-24 transition-all duration-500"></div>
+            <div class="text-3xl font-bold mb-1 counter" data-target="20">0</div>
+            <div class="uppercase font-light tracking-wide">Community Projects</div>
+            <div class="w-10 h-0.5 bg-green-400 mx-auto mt-2 group-hover:w-16 transition-all duration-300"></div>
+          </div>
+          <div class="p-2 group transform transition-all duration-300 hover:scale-105">
+            <div class="flex justify-center mb-1">
+              <div class="w-10 h-10 rounded-full bg-green-600/30 flex items-center justify-center">
+                <i class="fas fa-building text-xl text-green-300"></i>
+              </div>
+            </div>
+            <div class="text-3xl font-bold mb-1 counter" data-target="9">0</div>
+            <div class="uppercase font-light tracking-wide">Branches</div>
+            <div class="w-10 h-0.5 bg-green-400 mx-auto mt-2 group-hover:w-16 transition-all duration-300"></div>
           </div>
         </div>
       </div>

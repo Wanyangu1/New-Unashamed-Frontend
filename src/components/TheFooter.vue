@@ -110,7 +110,7 @@
         </div>
 
         <div class="text-sm text-blue-300">
-          Designed by <a href="https://acw-portfolio.afroartsafary.com/" target="_blank"
+          Designed by <a href="https://clinton.miteexplorers.com/" target="_blank"
             class="text-green-400 hover:text-green-300">ACW Developers</a>
         </div>
       </div>
