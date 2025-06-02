@@ -9,6 +9,7 @@ import testimonial2 from '@/assets/images/testimonials/testimonial2.jpg'
 import testimonial3 from '@/assets/images/testimonials/testimonial3.jpg'
 import groupImage from '@/assets/images/Events/Group.jpg'
 import eventImage from '@/assets/images/event.png'
+import bgImage from '@/assets/images/Events/bg1.jpeg';
 
 // Enhanced parallax effect with bubble movement
 const handleScroll = () => {
@@ -108,9 +109,9 @@ onMounted(() => {
 
     <!-- Hero Section with Parallax -->
     <section class="hero-parallax relative h-[90vh] min-h-[300px] overflow-hidden">
-      <div
-        class="parallax-bg absolute inset-0 bg-[url('@/assets/images/Events/bg1.jpeg')] bg-cover bg-center bg-no-repeat"
-        data-parallax="scroll" data-image-src="@/assets/images/bg.jpg" data-speed="0.4"></div>
+      <div class="parallax-bg absolute inset-0 bg-cover bg-center bg-no-repeat"
+        :style="{ backgroundImage: `url(${bgImage})` }" data-parallax="scroll" data-speed="0.4"></div>
+
 
       <!-- Gradient Overlay -->
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
@@ -382,7 +383,6 @@ onMounted(() => {
     </section>
     <!-- Testimonials Section with animated cards -->
     <section class="py-20 bg-green-700 text-white relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10 bg-[url('@/assets/images/pattern.png')] bg-repeat"></div>
       <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
           <span class="text-green-300 font-semibold tracking-wider">VOICES OF IMPACT</span>
