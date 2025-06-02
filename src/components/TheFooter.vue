@@ -1,3 +1,24 @@
+<script setup>
+import usaFlag from '@/assets/images/usa.png';
+import logo from '@/assets/images/unashamed.png';
+
+const socialLinks = [
+  { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://facebook.com' },
+  { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://twitter.com' },
+  { name: 'Instagram', icon: 'fab fa-instagram', url: 'https://instagram.com' },
+  { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com' }
+];
+
+const quickLinks = [
+  { name: 'Home', path: '/', icon: 'fas fa-home' },
+  { name: 'About Us', path: '/about', icon: 'fas fa-info-circle' },
+  { name: 'Our Impact', path: '/impact', icon: 'fas fa-chart-line' },
+  { name: 'Programs', path: '/programs', icon: 'fas fa-hands-helping' },
+  { name: 'Blog', path: '/blog', icon: 'fas fa-newspaper' },
+  { name: 'Get Involved', path: '/volunteer', icon: 'fas fa-hand-holding-heart' }
+];
+</script>
+
 <template>
   <footer class="bg-gradient-to-b from-blue-900 to-blue-800 text-white pt-12 pb-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -5,7 +26,7 @@
         <!-- Brand & Social Section -->
         <div class="space-y-4">
           <div class="flex items-center space-x-3">
-            <img src="@/assets/images/unashamed.png" class="h-12" alt="Unashamed Charity Group Logo" />
+            <img :src="logo" class="h-12" alt="Unashamed Charity Group Logo" />
             <div>
               <span class="text-xl font-bold text-white">Unashamed</span>
               <span class="block text-sm text-blue-200">Charity Group</span>
@@ -63,7 +84,7 @@
             <h4 class="text-sm font-semibold text-blue-200 mb-2">Currency</h4>
             <div class="flex items-center space-x-2">
               <span class="text-white font-medium">USD</span>
-              <img class="h-6 w-6 rounded-full border border-blue-300" src="@/assets/images/usa.png" alt="USA Flag" />
+              <img class="h-6 w-6 rounded-full border border-blue-300" :src="usaFlag" alt="USA Flag" />
             </div>
           </div>
         </div>
@@ -118,47 +139,21 @@
   </footer>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      socialLinks: [
-        { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://facebook.com' },
-        { name: 'Twitter', icon: 'fab fa-twitter', url: 'https://twitter.com' },
-        { name: 'Instagram', icon: 'fab fa-instagram', url: 'https://instagram.com' },
-        { name: 'LinkedIn', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com' }
-      ],
-      quickLinks: [
-        { name: 'Home', path: '/', icon: 'fas fa-home' },
-        { name: 'About Us', path: '/about', icon: 'fas fa-info-circle' },
-        { name: 'Our Impact', path: '/impact', icon: 'fas fa-chart-line' },
-        { name: 'Programs', path: '/programs', icon: 'fas fa-hands-helping' },
-        { name: 'Blog', path: '/blog', icon: 'fas fa-newspaper' },
-        { name: 'Get Involved', path: '/volunteer', icon: 'fas fa-hand-holding-heart' }
-      ]
-    }
-  }
-}
-</script>
-
 <style scoped>
 footer {
   background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
 }
 
-/* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus styles for accessibility */
 a:focus,
 button:focus {
   outline: 2px solid #93c5fd;
   outline-offset: 2px;
 }
 
-/* Animation for social icons */
 .fab,
 .fas {
   transition: transform 0.2s ease;
