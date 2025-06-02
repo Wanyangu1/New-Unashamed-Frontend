@@ -4,12 +4,12 @@ import { format } from 'date-fns';
 import TheNavbar from '@/components/TheNavbar.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import { useEvents } from "@/composables/useEvent";
-import testimonial1 from '@/assets/images/Testimonials/testimonial1.jpg'
-import testimonial2 from '@/assets/images/Testimonials/testimonial2.jpg'
-import testimonial3 from '@/assets/images/Testimonials/testimonial3.jpg'
-import groupImage from '@/assets/images/Events/Group.jpg'
-import eventImage from '@/assets/images/event.png'
-import bgImage from '@/assets/images/Events/bg1.jpeg';
+import testimonial1 from '@/assets/Images/Testimonials/testimonial1.jpg'
+import testimonial2 from '@/assets/Images/Testimonials/testimonial2.jpg'
+import testimonial3 from '@/assets/Images/Testimonials/testimonial3.jpg'
+import groupImage from '@/assets/Images/Events/Group.jpg'
+import eventImage from '@/assets/Images/event.png'
+import bgImage from '@/assets/Images/Events/bg1.jpeg';
 
 // Enhanced parallax effect with bubble movement
 const handleScroll = () => {
