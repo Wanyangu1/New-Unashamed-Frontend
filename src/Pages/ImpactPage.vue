@@ -4,7 +4,7 @@ import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import bgImg from '@/assets/images/Events/bg5.jpeg'
 //import backgroundImg from '@/assets/images/background.jpg'
-import backgdImg from '@/assets/Images/Child.webp'
+import backgdImg from '@/assets/Images/child.webp'
 
 
 const impactItems = [

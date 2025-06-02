@@ -14,7 +14,7 @@ import colorfestImage from '@/assets/Images/Events/colorfest.jpg'
 import mentalhealthImage from '@/assets/Images/Events/mentalhealth.jpg'
 import sanitaryImage from '@/assets/Images/Events/Cleaning.jpg'
 import streetsImage from '@/assets/Images/Events/streets1.jpg'
-import fooddriveImage from '@/assets/Images/Events/feeding1.jpg'
+import fooddriveImage from '@/assets/Images/Events/Feeding1.jpg'
 import youngmomsImage from '@/assets/Images/Events/youngmoms.jpg'
 import bgImg from '@/assets/Images/Events/bg2.jpg'
 
