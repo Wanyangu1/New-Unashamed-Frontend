@@ -185,11 +185,10 @@ onMounted(() => {
         </svg>
       </div>
     </section>
-
     <!-- Reduced Size Stats Section with Branches -->
     <section class="py-4 bg-gradient-to-b from-green-700 to-green-800 text-white text-sm">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           <div class="p-2 group transform transition-all duration-300 hover:scale-105">
             <div class="flex justify-center mb-1">
               <div class="w-10 h-10 rounded-full bg-green-600/30 flex items-center justify-center">
