@@ -2,6 +2,7 @@
 import { useMembers } from "@/composables/useMembers";
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import bg2Image from '@/assets/images/bg2.png'
 
 const { teamMembers } = useMembers();
 </script>
@@ -71,7 +72,7 @@ const { teamMembers } = useMembers();
     <section class="py-20 px-6 bg-white">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div class="relative">
-          <img src="@/assets/images/bg2.png" alt="About Us Image"
+          <img :src="bg2Image" alt="About Us Image"
             class="w-full rounded-2xl shadow-xl transform hover:scale-[1.02] transition duration-500" />
           <div
             class="absolute -bottom-6 -right-6 bg-yellow-500 w-32 h-32 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
