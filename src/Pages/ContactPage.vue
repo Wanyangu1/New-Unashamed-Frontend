@@ -193,7 +193,6 @@ const { name, email, message, formMessage, alertType, submitForm } = useContact(
 
 <style>
 .contact {
-  background-image: url('@/assets/images/bg.jpg');
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: 40%;
