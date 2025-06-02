@@ -1,7 +1,7 @@
 <script setup>
 import TheNavbar from '@/components/TheNavbar.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import comingsoon from '@/assets/images/comingsoon.png';
+import comingsoon from '@/assets/Images/comingsoon.png';
 </script>
 
 <template>
