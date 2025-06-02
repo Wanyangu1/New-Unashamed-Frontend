@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted } from 'vue';
 import TheNavbar from "@/components/TheNavbar.vue";
 import TheFooter from "@/components/TheFooter.vue";
-import bgImg from '@/assets/images/Events/bg5.jpeg'
+import bgImg from '@/assets/Images/Events/bg5.jpeg'
 //import backgroundImg from '@/assets/images/background.jpg'
 import backgdImg from '@/assets/Images/child.webp'
 
