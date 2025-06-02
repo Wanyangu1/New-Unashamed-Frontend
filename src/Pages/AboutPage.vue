@@ -8,7 +8,7 @@ import groupImage from '@/assets/Images/Events/Group.jpg';
 import kirinyagaImage from '@/assets/Images/Events/Kirinyaga.jpg';
 import kiambuImage from '@/assets/Images/Events/Kiambu.jpg';
 import meruImage from '@/assets/Images/Events/Meru.jpg';
-import rongoImage from '@/assets/Images/Events/rongo.jpg';
+import rongoImage from '@/assets/Images/Events/Rongo.jpg';
 import funImage from '@/assets/Images/Events/fun.jpg';
 import laikipiaImage from '@/assets/Images/Events/Laikipia.jpg';
 
