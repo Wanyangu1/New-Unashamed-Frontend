@@ -7,6 +7,7 @@ import ImpactPage from '@/Pages/ImpactPage.vue'
 import BlogPage from '@/Pages/BlogPage.vue'
 import DonationPage from '@/Pages/DonationPage.vue'
 import ProgramPage from '@/Pages/ProgramPage.vue'
+import SponsorPage from '@/Pages/SponsorPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/programs',
       name: 'programs',
       component: ProgramPage,
+    },
+    {
+      path: '/sponsor',
+      name: 'sponsor',
+      component: SponsorPage,
     },
   ],
 })

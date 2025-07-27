@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'About Us', path: '/about', icon: 'fas fa-info-circle' },
   { name: 'Our Impact', path: '/impact', icon: 'fas fa-chart-line' },
   { name: 'Programs', path: '/programs', icon: 'fas fa-hands-helping' },
-  { name: 'Blog', path: '/blog', icon: 'fas fa-blog' },
+  { name: 'Sponsor', path: '/sponsor', icon: 'fas fa-heart' },
 ];
 
 const socialLinks = [
