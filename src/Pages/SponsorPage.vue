@@ -1,123 +1,40 @@
 <script setup>
-import { ref, computed } from 'vue'
-import TheNavbar from '@/components/TheNavbar.vue'
-import TheFooter from '@/components/TheFooter.vue'
+import { ref, computed, onMounted } from 'vue';
+import axiosInstance from '@/axiosconfig/axiosInstance';
+import TheNavbar from '@/components/TheNavbar.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
-// Sample data - replace with real data from your API
-const children = ref([
-  {
-    id: 1,
-    name: "Grace Mwende",
-    age: 7,
-    gender: "Female",
-    country: "Kenya",
-    waitingDays: 124,
-    birthday: "May 15",
-    bio: "Grace loves drawing and wants to be a teacher. She lives with her grandmother.",
-    urgent: true
-  },
-  {
-    id: 2,
-    name: "David Omondi",
-    age: 9,
-    gender: "Male",
-    country: "Kenya",
-    waitingDays: 89,
-    birthday: "August 3",
-    bio: "David enjoys soccer and math. His family struggles to afford school fees.",
-    urgent: false
-  },
-  {
-    id: 3,
-    name: "Amina Hassan",
-    age: 5,
-    gender: "Female",
-    country: "Tanzania",
-    waitingDays: 156,
-    birthday: "January 22",
-    bio: "Amina is full of energy and loves to sing. She needs sponsorship to attend school.",
-    urgent: true
-  },
-  {
-    id: 4,
-    name: "Joseph Kamau",
-    age: 10,
-    gender: "Male",
-    country: "Kenya",
-    waitingDays: 67,
-    birthday: "November 8",
-    bio: "Joseph is bright but malnourished. Sponsorship would provide meals and education.",
-    urgent: false
-  },
-  {
-    id: 5,
-    name: "Sarah Achieng",
-    age: 8,
-    gender: "Female",
-    country: "Uganda",
-    waitingDays: 112,
-    birthday: "March 30",
-    bio: "Sarah dreams of becoming a doctor. She's been waiting for a sponsor for months.",
-    urgent: true
-  },
-  {
-    id: 6,
-    name: "Peter Otieno",
-    age: 6,
-    gender: "Male",
-    country: "Kenya",
-    waitingDays: 45,
-    birthday: "July 12",
-    bio: "Peter is shy but loves animals. His family cannot afford his education.",
-    urgent: false
-  },
-  {
-    id: 7,
-    name: "Esther Wambui",
-    age: 11,
-    gender: "Female",
-    country: "Kenya",
-    waitingDays: 201,
-    birthday: "September 5",
-    bio: "Esther has been waiting the longest. She's responsible and helps care for siblings.",
-    urgent: true
-  },
-  {
-    id: 8,
-    name: "Michael Njoroge",
-    age: 7,
-    gender: "Male",
-    country: "Rwanda",
-    waitingDays: 78,
-    birthday: "December 18",
-    bio: "Michael is creative and loves building things. Sponsorship would change his future.",
-    urgent: false
-  }
-])
+const children = ref([]);
+const filters = ref({ country: '', gender: '', age: '' });
+
+const selectedChild = ref(null);
+const selectedAmount = ref(38);
+const sponsorForm = ref({
+  name: '',
+  email: '',
+  phone: '',
+  country: '',
+  address: '',
+  payment_method: 'Credit Card'
+});
 
 const countries = computed(() => {
-  return [...new Set(children.value.map(child => child.country))]
-})
-
-const filters = ref({
-  country: '',
-  gender: '',
-  age: ''
-})
+  return [...new Set(children.value.map(child => child.country))];
+});
 
 const filteredChildren = computed(() => {
   return children.value.filter(child => {
-    const countryMatch = !filters.value.country || child.country === filters.value.country
-    const genderMatch = !filters.value.gender || child.gender === filters.value.gender
+    const countryMatch = !filters.value.country || child.country === filters.value.country;
+    const genderMatch = !filters.value.gender || child.gender === filters.value.gender;
     const ageMatch = !filters.value.age || (
       (filters.value.age === '3-5' && child.age >= 3 && child.age <= 5) ||
       (filters.value.age === '6-8' && child.age >= 6 && child.age <= 8) ||
       (filters.value.age === '9-11' && child.age >= 9 && child.age <= 11) ||
       (filters.value.age === '12+' && child.age >= 12)
-    )
-    return countryMatch && genderMatch && ageMatch
-  })
-})
+    );
+    return countryMatch && genderMatch && ageMatch;
+  });
+});
 
 const resetFilters = () => {
   filters.value = {
@@ -125,7 +42,7 @@ const resetFilters = () => {
     gender: '',
     age: ''
   }
-}
+};
 
 const faqs = ref([
   {
@@ -153,18 +70,60 @@ const faqs = ref([
     answer: "Approximately 80% of your sponsorship goes directly to programs that benefit your sponsored child and their community. The remaining 20% covers administrative costs and fundraising to help more children.",
     open: false
   }
-])
+]);
 
 const toggleFaq = (index) => {
-  faqs.value[index].open = !faqs.value[index].open
-}
-
-const selectedChild = ref(null)
-const selectedAmount = ref(38)
+  faqs.value[index].open = !faqs.value[index].open;
+};
 
 const openModal = (child) => {
-  selectedChild.value = child
-}
+  selectedChild.value = child;
+  sponsorForm.value = {
+    name: '',
+    email: '',
+    phone: '',
+    country: '',
+    address: '',
+    payment_method: 'Credit Card'
+  };
+};
+
+const completeSponsorship = async () => {
+  if (!selectedChild.value) return;
+  const payload = {
+    child: selectedChild.value.id,
+    name: sponsorForm.value.name,
+    email: sponsorForm.value.email,
+    phone: sponsorForm.value.phone,
+    country: sponsorForm.value.country,
+    address: sponsorForm.value.address,
+    monthly_subscription: selectedAmount.value,
+    payment_method: sponsorForm.value.payment_method
+  };
+  try {
+    await axiosInstance.post('/api/sponsor/', payload);
+    alert('Thank you for sponsoring!');
+    selectedChild.value = null;
+  } catch (err) {
+    console.error(err);
+    alert('Something went wrong, please try again.');
+  }
+};
+
+onMounted(async () => {
+  try {
+    const res = await axiosInstance.get('/api/children/');
+    children.value = res.data.map(c => ({
+      ...c,
+      gender: c.gender || 'Female',
+      waitingDays: Math.floor((new Date() - new Date(c.birthday)) / (1000 * 60 * 60 * 24)),
+      birthday: new Date(c.birthday).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+      urgent: Math.random() > 0.7 // Randomly mark some as urgent
+    }));
+  } catch (err) {
+    console.error('Failed to fetch children:', err);
+  }
+});
 </script>
 
 <template>
@@ -176,8 +135,7 @@ const openModal = (child) => {
     <section class="relative h-screen min-h-[600px] overflow-hidden">
       <!-- High-contrast background image with dark overlay -->
       <div class="absolute inset-0">
-        <img src="https://cdn.pixabay.com/photo/2015/07/31/15/01/girl-869213_1280.jpg" alt="Happy child"
-          class="w-full h-full object-cover">
+        <img src="@/assets/Images/Events/bg6.jpg" alt="Happy child" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
       </div>
@@ -250,7 +208,7 @@ const openModal = (child) => {
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div class="p-6">
-            <div class="text-4xl font-bold text-green-600 mb-3">1.9M+</div>
+            <div class="text-4xl font-bold text-green-600 mb-3">10+</div>
             <div class="text-gray-700">Children Sponsored</div>
           </div>
           <div class="p-6">
@@ -258,7 +216,7 @@ const openModal = (child) => {
             <div class="text-gray-700">Countries</div>
           </div>
           <div class="p-6">
-            <div class="text-4xl font-bold text-green-600 mb-3">60+</div>
+            <div class="text-4xl font-bold text-green-600 mb-3">5+</div>
             <div class="text-gray-700">Years of Experience</div>
           </div>
           <div class="p-6">
@@ -314,18 +272,17 @@ const openModal = (child) => {
     <section class="py-20 bg-white">
       <div class="container mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-12">
+          <!-- Local Video -->
           <div class="lg:w-1/2">
-            <div class="relative rounded-xl overflow-hidden shadow-xl aspect-w-16 aspect-h-9">
-              <!-- AI-generated placeholder image for video -->
-              <img src="https://source.unsplash.com/random/800x450/?charity,children" alt="Sponsorship impact"
-                class="w-full h-96 object-cover">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center">
-                  <i class="fas fa-play text-green-600 text-3xl"></i>
-                </div>
-              </div>
+            <div class="relative rounded-xl overflow-hidden shadow-xl">
+              <video class="w-full h-96 rounded-xl object-cover" controls preload="metadata">
+                <source src="@/assets/Video/Sponsorship Impact - Gary Louis Nkono.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
+
+          <!-- Text Content -->
           <div class="lg:w-1/2">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">The Power of Sponsorship</h2>
             <p class="text-gray-600 mb-6 leading-relaxed">
@@ -397,9 +354,8 @@ const openModal = (child) => {
           <div v-for="child in filteredChildren" :key="child.id"
             class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
             <div class="relative">
-              <!-- AI-generated child images from Unsplash -->
               <img
-                :src="`https://source.unsplash.com/random/400x500/?portrait,${child.gender === 'Male' ? 'boy' : 'girl'},${child.country.toLowerCase()}`"
+                :src="child.image || `https://source.unsplash.com/random/400x500/?portrait,${child.gender === 'Male' ? 'boy' : 'girl'},${child.country.toLowerCase()}`"
                 :alt="child.name" class="w-full h-64 object-cover">
               <div v-if="child.urgent"
                 class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
@@ -421,7 +377,10 @@ const openModal = (child) => {
                   <div class="font-medium">{{ child.birthday }}</div>
                 </div>
               </div>
-              <p class="text-gray-600 mb-6 text-sm">{{ child.bio }}</p>
+              <p class="text-gray-600 mb-6 text-sm">
+                {{ child.description || child.bio || "This child is waiting for a sponsor to change their life story."
+                }}
+              </p>
               <button @click="openModal(child)"
                 class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300">
                 Sponsor {{ child.name.split(' ')[0] }}
@@ -464,11 +423,14 @@ const openModal = (child) => {
         </div>
 
         <div class="grid md:grid-cols-2 gap-10">
+          <!-- Testimonial 1 -->
           <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/10">
             <div class="flex items-center mb-6">
-              <!-- AI-generated sponsor image -->
-              <img src="https://source.unsplash.com/random/100x100/?portrait,woman" alt="Sponsor"
-                class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-green-400">
+              <!-- Sponsor Icon -->
+              <div
+                class="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center text-xl mr-4 border-2 border-green-400">
+                <i class="fas fa-user-friends"></i>
+              </div>
               <div>
                 <h4 class="font-bold text-lg">Mark & Sarah J.</h4>
                 <div class="text-green-200 text-sm">Sponsors since 2015</div>
@@ -480,10 +442,9 @@ const openModal = (child) => {
               letters and photos, knowing we're helping her break the cycle of poverty - it's priceless.
             </p>
             <div class="flex items-center">
-              <div class="mr-4">
-                <!-- AI-generated child image -->
-                <img src="https://source.unsplash.com/random/100x100/?portrait,girl,african" alt="Sponsored child"
-                  class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div
+                class="w-12 h-12 rounded-full bg-white text-green-700 flex items-center justify-center text-lg mr-4 border-2 border-white">
+                <i class="fas fa-child"></i>
               </div>
               <div>
                 <div class="font-medium">Maria, 9</div>
@@ -491,11 +452,15 @@ const openModal = (child) => {
               </div>
             </div>
           </div>
+
+          <!-- Testimonial 2 -->
           <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/10">
             <div class="flex items-center mb-6">
-              <!-- AI-generated sponsor image -->
-              <img src="https://source.unsplash.com/random/100x100/?portrait,man" alt="Sponsor"
-                class="w-14 h-14 rounded-full object-cover mr-4 border-2 border-green-400">
+              <!-- Sponsor Icon -->
+              <div
+                class="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center text-xl mr-4 border-2 border-green-400">
+                <i class="fas fa-user"></i>
+              </div>
               <div>
                 <h4 class="font-bold text-lg">David T.</h4>
                 <div class="text-green-200 text-sm">Sponsor since 2018</div>
@@ -507,10 +472,9 @@ const openModal = (child) => {
               realized he's helped me grow in my faith just as much as I've helped him with his education.
             </p>
             <div class="flex items-center">
-              <div class="mr-4">
-                <!-- AI-generated child image -->
-                <img src="https://source.unsplash.com/random/100x100/?portrait,boy,african" alt="Sponsored child"
-                  class="w-12 h-12 rounded-full object-cover border-2 border-white">
+              <div
+                class="w-12 h-12 rounded-full bg-white text-green-700 flex items-center justify-center text-lg mr-4 border-2 border-white">
+                <i class="fas fa-child"></i>
               </div>
               <div>
                 <div class="font-medium">Emmanuel, 12</div>
@@ -579,9 +543,8 @@ const openModal = (child) => {
                 </h3>
                 <div class="flex flex-col md:flex-row gap-8">
                   <div class="md:w-1/3">
-                    <!-- AI-generated child image for modal -->
                     <img
-                      :src="`https://source.unsplash.com/random/400x500/?portrait,${selectedChild.gender === 'Male' ? 'boy' : 'girl'},${selectedChild.country.toLowerCase()}`"
+                      :src="selectedChild.image || `https://source.unsplash.com/random/400x500/?portrait,${selectedChild.gender === 'Male' ? 'boy' : 'girl'},${selectedChild.country.toLowerCase()}`"
                       :alt="selectedChild.name" class="w-full rounded-lg shadow-md">
                     <div class="mt-4 text-center">
                       <div class="font-bold text-gray-800">{{ selectedChild.name }}</div>
@@ -606,26 +569,37 @@ const openModal = (child) => {
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                         Your Information
                       </label>
-                      <input type="text" id="name" placeholder="Full Name"
+                      <input v-model="sponsorForm.name" type="text" placeholder="Full Name"
                         class="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:ring-green-500 focus:border-green-500">
-                      <input type="email" id="email" placeholder="Email Address"
+                      <input v-model="sponsorForm.email" type="email" placeholder="Email Address"
                         class="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:ring-green-500 focus:border-green-500">
-                      <input type="tel" id="phone" placeholder="Phone Number"
+                      <input v-model="sponsorForm.phone" type="tel" placeholder="Phone Number"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div class="mb-6">
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="country">
+                        Country & Address
+                      </label>
+                      <input v-model="sponsorForm.country" type="text" placeholder="Your Country"
+                        class="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:ring-green-500 focus:border-green-500">
+                      <textarea v-model="sponsorForm.address" placeholder="Address"
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"></textarea>
                     </div>
                     <div class="mb-6">
                       <label class="block text-gray-700 text-sm font-bold mb-2" for="payment">
                         Payment Method
                       </label>
                       <div class="flex items-center mb-3">
-                        <input id="credit-card" name="payment" type="radio" checked
+                        <input id="credit-card" name="payment" type="radio" value="Credit Card"
+                          v-model="sponsorForm.payment_method"
                           class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
                         <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700">
                           Credit/Debit Card
                         </label>
                       </div>
                       <div class="flex items-center">
-                        <input id="bank-transfer" name="payment" type="radio"
+                        <input id="bank-transfer" name="payment" type="radio" value="Bank Transfer"
+                          v-model="sponsorForm.payment_method"
                           class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300">
                         <label for="bank-transfer" class="ml-3 block text-sm font-medium text-gray-700">
                           Bank Transfer
@@ -638,7 +612,7 @@ const openModal = (child) => {
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button type="button"
+            <button @click="completeSponsorship" type="button"
               class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
               Complete Sponsorship
             </button>
@@ -716,6 +690,58 @@ img {
 @keyframes shine {
   to {
     background-position-x: -200%;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-fade-in-down.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-fade-in-down.delay-300 {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+
+  60% {
+    transform: translateY(-10px) translateX(-50%);
   }
 }
 </style>
